@@ -13,4 +13,6 @@ class DTOPessoa {
       required this.cpf,
       required this.senha,
       required this.numeroTelefone});
+
+  set id(int id) {}
 }

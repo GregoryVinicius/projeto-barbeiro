@@ -1,5 +1,5 @@
 import 'package:path/path.dart';
-import 'package:projeto_barbeiro/aula/banco/script.dart';
+import 'package:projeto_barbeiro/app/banco/script.dart';
 import 'package:sqflite/sqflite.dart';
 
 class Conexao {

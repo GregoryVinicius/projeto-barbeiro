@@ -1,3 +1,5 @@
+import 'package:projeto_barbeiro/app/dominio/cpf.dart';
+
 class DTOPessoa {
   late String nome;
   late int idade;

@@ -98,8 +98,7 @@ class Pessoa {
     bool temLetraMaiuscula = senha.contains(RegExp(r'[A-Z]'));
     bool temLetraMinuscula = senha.contains(RegExp(r'[a-z]'));
     bool temNumeros = senha.contains(RegExp(r'[0-9]'));
-    bool temCaractereEspecial =
-        senha.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+    bool temCaractereEspecial = senha.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>-_]'));
     bool temTamanhoMinimo = senha.length >= 8;
 
     return temLetraMaiuscula &&

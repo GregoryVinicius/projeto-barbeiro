@@ -35,7 +35,6 @@ class Pessoa {
 
   Future<bool> excluir(dynamic id) async {
     this.id = id;
-    await dao.alterarStatus(_id);
     return true;
   }
 

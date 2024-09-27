@@ -6,7 +6,7 @@ class Conexao {
   static late Database _db;
   static bool conexaoCriada = false;
 
-  static Future<Database> abrir() async {
+  static Future<Database> iniciar() async {
     if (!conexaoCriada) {
       var path = join(await getDatabasesPath(), 'banco.db');
       _db = await openDatabase(

@@ -13,7 +13,7 @@ void main() {
     group('Senha', () {
       String senha = "aA1!aaaa";
       test('Senha com todos requerimentos', () {
-        expect(() => validarSenha(senha), returnsNormally);
+        expect(() => Pessoa.validarSenha(senha), returnsNormally);
       });
     });
   });

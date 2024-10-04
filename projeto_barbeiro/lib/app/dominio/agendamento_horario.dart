@@ -1,4 +1,9 @@
-class AgendarHorario {
+class AgendamentoHorario {
+  AgendamentoHorario(DateTime diaMarcado, DateTime horarioMarcado) {}
+
+  // String AgendarHorario() {
+    
+  // }
 /*
   O Pessoa pode agendar horário de corte de cabelo ou barba:
 

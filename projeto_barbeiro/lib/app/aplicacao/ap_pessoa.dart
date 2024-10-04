@@ -1,5 +1,5 @@
 import 'package:projeto_barbeiro/app/banco/sqlite/dao_pessoa.dart';
-import 'package:projeto_barbeiro/app/dominio/Pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/pessoa.dart';
 import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
 import 'package:projeto_barbeiro/app/dominio/interface/i_dao_pessoa.dart';
 

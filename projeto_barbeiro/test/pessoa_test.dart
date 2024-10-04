@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_barbeiro/app/dominio/Pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/pessoa.dart';
 import 'package:projeto_barbeiro/app/dominio/cpf.dart';
 
 void main() {
@@ -13,7 +13,7 @@ void main() {
     group('Senha', () {
       String senha = "aA1!aaaa";
       test('Senha com todos requerimentos', () {
-        expect(() => Pessoa.validarSenha(senha), returnsNormally);
+        expect(() => Pessoa.ValidarSenha(senha), returnsNormally);
       });
     });
   });

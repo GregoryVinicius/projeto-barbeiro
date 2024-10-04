@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_barbeiro/app/rotas.dart';
+import 'package:projeto_barbeiro/app/widget/detalhes_pessoa.dart';
+import 'package:projeto_barbeiro/app/widget/form_pessoa.dart';
 import 'package:projeto_barbeiro/app/widget/lista_pessoa.dart';
 
 class MeuApp extends StatelessWidget {
@@ -12,7 +14,7 @@ class MeuApp extends StatelessWidget {
         theme: ThemeData(primarySwatch: Colors.blue),
         routes: {
           Rotas.home: (context) => ListaPessoa(),
-          Rotas.formPessoas: (context) => FromPessoas(),
+          Rotas.formPessoas: (context) => FormPessoa(),
           Rotas.detalhesPessoas: (context) => DetalhesPessoas()
         });
   }

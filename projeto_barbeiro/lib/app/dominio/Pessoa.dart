@@ -1,4 +1,3 @@
-import 'package:projeto_barbeiro/app/dominio/cpf.dart';
 import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
 import 'package:projeto_barbeiro/app/dominio/interface/i_dao_pessoa.dart';
 

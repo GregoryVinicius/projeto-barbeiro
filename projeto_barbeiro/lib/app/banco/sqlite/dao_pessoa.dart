@@ -50,15 +50,6 @@ class DaoPessoa implements IDAOPessoa {
         senha: resultado['senha'].toString());
     return professor;
   }
-  //   CREATE TABLE pessoa(
-  //   id INTEGER NOT NULL PRIMARY KEY
-  //   ,nome VARCHAR(200) NOT NULL
-  //   ,idade integer NOT NULL
-  //   ,numeroTelefone VARCHAR(16) NOT NULL
-  //   ,email VARCHAR(200)
-  //   ,cpf CHAR(14) NOT NULL UNIQUE
-  //   ,senha VARCHAR(200) NOT NULL
-  // )
 
   @override
   Future<List<DTOPessoa>> consultar() async {
@@ -76,10 +67,4 @@ class DaoPessoa implements IDAOPessoa {
     });
     return pessoas;
   }
-  
-  @override
-  Future<bool> alterarStatus(int id) {
-    // TODO: implement alterarStatus
-    throw UnimplementedError();
-  } // precisa arrumar isso
 }

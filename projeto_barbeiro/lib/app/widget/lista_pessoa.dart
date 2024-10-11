@@ -57,7 +57,7 @@ class ListaPessoa extends StatelessWidget {
                   itemCount: lista.length,
                   itemBuilder: (context, index) {
                     var pessoa = lista[index];
-                    ListTile(
+                    return ListTile(
                       leading: Icon(Icons.person),
                       title: Text(pessoa.nome),
                       subtitle: Text(pessoa.cpf),
@@ -66,18 +66,5 @@ class ListaPessoa extends StatelessWidget {
             }
           }),
     );
-    // return Container(
-    //   child: Column(
-    //     children: [
-    //       TextButton(
-    //           onPressed: () =>
-    //               Navigator.pushNamed(context, Rotas.detalhesPessoas),
-    //           child: Text('detalhes')),
-    //       TextButton(
-    //           onPressed: () => Navigator.pushNamed(context, Rotas.formPessoas),
-    //           child: Text('Formulário')),
-    //     ],
-    //   ),
-    // );
   }
 }

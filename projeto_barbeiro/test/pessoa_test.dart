@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_barbeiro/app/dominio/pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/Cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/cpf.dart';
 
 void main() {
-  group("Pessoa", () {
+  group("Cliente", () {
     group("CPF", () {
       CPF cpf = CPF("123.456.789-10");
       test('teste cpf não vazio', () {
@@ -13,7 +13,7 @@ void main() {
     group('Senha', () {
       String senha = "aA1!aaaa";
       test('Senha com todos requerimentos', () {
-        expect(() => Pessoa.ValidarSenha(senha), returnsNormally);
+        expect(() => Cliente.ValidarSenha(senha), returnsNormally);
       });
     });
   });

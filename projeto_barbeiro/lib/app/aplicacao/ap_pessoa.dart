@@ -1,21 +1,21 @@
 import 'package:projeto_barbeiro/app/banco/sqlite/dao_pessoa.dart';
-import 'package:projeto_barbeiro/app/dominio/pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/Cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
-import 'package:projeto_barbeiro/app/dominio/interface/i_dao_pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/interface/i_dao_cliente.dart';
 
-class APPessoa {
-  late IDAOPessoa dao;
-  late Pessoa dominio;
+class APCliente {
+  late IDAOCliente dao;
+  late Cliente dominio;
 
-  APPessoa() {
-    dao = DaoPessoa();
+  APCliente() {
+    dao = DaoCliente();
   }
 
-   Future<DTOPessoa> salvar(DTOPessoa dto) async {
+   Future<DTOCliente> salvar(DTOCliente dto) async {
     return await dominio.salvar(dto);
   }
 
-  Future<DTOPessoa> alterar(dynamic id) async {
+  Future<DTOCliente> alterar(dynamic id) async {
     return await dominio.alterar(id);
   }
 
@@ -24,7 +24,7 @@ class APPessoa {
     return true;
   }
 
-  Future<List<DTOPessoa>> consultar() async {
+  Future<List<DTOCliente>> consultar() async {
     return await dominio.consutlar();
   }
 }

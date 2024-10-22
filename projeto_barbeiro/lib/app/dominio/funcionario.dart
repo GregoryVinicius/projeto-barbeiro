@@ -1,7 +1,9 @@
-import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
-import 'package:projeto_barbeiro/app/dominio/interface/i_dao_pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/cliente.dart';
+import 'package:projeto_barbeiro/app/dominio/dto/dto_funcionario.dart';
+import 'package:projeto_barbeiro/app/dominio/interface/i_dao_cliente.dart';
+import 'package:projeto_barbeiro/app/dominio/interface/i_dao_funcionario.dart';
 
-class Pessoa {
+class Funcionario{
   dynamic _id;
   String? _nome;
   String? _email;
@@ -9,25 +11,27 @@ class Pessoa {
   String? _numeroTelefone;
   String? _cpf;
   String? _senha;
-  IDAOPessoa dao;
+  String? _cargo;
+  IDAOFuncionario dao;
 
-  Pessoa({required this.dao});
+  Funcionario({required this.dao});
 
-  validar({required DTOPessoa dto}) {
+  validar({required DTOFuncionario dto}) {
     nome = dto.nome;
     email = dto.email;
     idade = dto.idade;
     cpf = dto.cpf;
     senha = dto.senha;
-    numeroTelefone = dto.numeroTelefone!;
+    numeroTelefone = dto.numeroTelefone;
+    cargo = dto.cargo;
   }
 
-  Future<DTOPessoa> salvar(DTOPessoa dto) {
+  Future<DTOFuncionario> salvar(DTOFuncionario dto) {
     validar(dto: dto);
     return dao.salvar(dto);
   }
 
-  Future<DTOPessoa> alterar(dynamic id) async {
+  Future<DTOFuncionario> alterar(dynamic id) async {
     this.id = id;
     return await dao.alterar(_id);
   }
@@ -37,7 +41,7 @@ class Pessoa {
     return true;
   }
 
-  Future<List<DTOPessoa>> consutlar() async {
+  Future<List<DTOFuncionario>> consutlar() async {
     return await dao.consultar();
   }
 
@@ -47,6 +51,7 @@ class Pessoa {
   String? get cpf => _cpf;
   String? get numeroTelefone => _numeroTelefone;
   String? get senha => _senha;
+  String? get cargo => _cargo;
 
   set id(int? id) {
     if (id == null) throw Exception('ID não pode ser nulo');
@@ -85,6 +90,11 @@ class Pessoa {
   set senha(String? senha) {
     if (senha == null) throw Exception('Senha não pode ser nulo.');
     _senha = senha;
+  }
+
+    set cargo(String? cargo) {
+    if (cargo == null) throw Exception('Senha não pode ser nulo.');
+    _cargo = cargo;
   }
 
   static bool ValidarSenha(String senha) {

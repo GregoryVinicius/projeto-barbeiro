@@ -1,27 +1,27 @@
 import 'package:projeto_barbeiro/app/banco/conexao.dart';
-import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
-import 'package:projeto_barbeiro/app/dominio/interface/i_dao_cliente.dart';
+import 'package:projeto_barbeiro/app/dominio/dto/dto_funcionario.dart';
+import 'package:projeto_barbeiro/app/dominio/interface/i_dao_funcionario.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DaoCliente implements IDAOCliente {
+class DaoFuncionario implements IDAOFuncionario {
   late Database _db;
   final sqlInserir = '''
-    INSERT INTO cliente (nome, idade , numeroTelefone, email, cpf, senha)
-    VALUES (?,?,?,?,?,?)
+    INSERT INTO funcionario (nome, idade , numeroTelefone, email, cpf, senha, cargo)
+    VALUES (?,?,?,?,?,?,?)
   ''';
   final sqlAlterar = '''
-    UPDATE cliente SET nome=?, idade=?, numeroTelefone=?, email=?, cpf=?
+    UPDATE funcionario SET nome=?, idade=?, numeroTelefone=?, email=?, cpf=?, cargo=?
     WHERE id = ?
   ''';
   final sqlConsultarPorId = '''
-    SELECT * FROM cliente WHERE id = ?;
+    SELECT * FROM funcionario WHERE id = ?;
   ''';
   final sqlConsultar = '''
-    SELECT * FROM cliente;
+    SELECT * FROM funcionario;
   ''';
 
   @override
-  Future<DTOCliente> salvar(DTOCliente dto) async {
+  Future<DTOFuncionario> salvar(DTOFuncionario dto) async {
     _db = await Conexao.iniciar();
     int id = await _db.rawInsert(sqlInserir,
         [dto.nome, dto.idade, dto.numeroTelefone, dto.email, dto.cpf]);
@@ -30,7 +30,7 @@ class DaoCliente implements IDAOCliente {
   }
 
   @override
-  Future<DTOCliente> alterar(DTOCliente dto) async {
+  Future<DTOFuncionario> alterar(DTOFuncionario dto) async {
     _db = await Conexao.iniciar();
     await _db.rawUpdate(sqlAlterar,
         [dto.nome, dto.idade, dto.numeroTelefone, dto.email, dto.cpf]);
@@ -38,32 +38,34 @@ class DaoCliente implements IDAOCliente {
   }
 
   @override
-  Future<DTOCliente> consultarPorId(int id) async {
+  Future<DTOFuncionario> consultarPorId(int id) async {
     _db = await Conexao.iniciar();
     var resultado = (await _db.rawQuery(sqlConsultarPorId, [id])).first;
-    DTOCliente professor = DTOCliente(
+    DTOFuncionario professor = DTOFuncionario(
         nome: resultado['nome'].toString(),
         idade: resultado['idade'].hashCode,
         numeroTelefone: resultado['numeroTelefone'].toString(),
         email: resultado['email'].toString(),
         cpf: resultado['CPF'].toString(),
-        senha: resultado['senha'].toString());
+        senha: resultado['senha'].toString(),
+        cargo: resultado['cargo'].toString());
     return professor;
   }
 
   @override
-  Future<List<DTOCliente>> consultar() async {
+  Future<List<DTOFuncionario>> consultar() async {
     _db = await Conexao.iniciar();
     var resultado = await _db.rawQuery(sqlConsultar);
-    List<DTOCliente> Clientes = List.generate(resultado.length, (i) {
+    List<DTOFuncionario> Clientes = List.generate(resultado.length, (i) {
       var linha = resultado[i];
-      return DTOCliente(
+      return DTOFuncionario(
           nome: linha['nome'].toString(),
           idade: linha['idade'].hashCode,
           numeroTelefone: linha['numeroTelefone'].toString(),
           email: linha['email'].toString(),
           cpf: linha['CPF'].toString(),
-          senha: linha['senha'].toString());
+          senha: linha['senha'].toString(),
+          cargo: linha['cargo'].toString());
     });
     return Clientes;
   }

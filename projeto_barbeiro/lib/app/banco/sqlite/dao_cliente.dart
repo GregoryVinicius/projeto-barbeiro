@@ -24,7 +24,7 @@ class DaoCliente implements IDAOCliente {
   Future<DTOCliente> salvar(DTOCliente dto) async {
     _db = await Conexao.iniciar();
     int id = await _db.rawInsert(sqlInserir,
-        [dto.nome, dto.idade, dto.numeroTelefone, dto.email, dto.cpf]);
+        [dto.nome, dto.idade, dto.numeroTelefone, dto.email, dto.cpf, dto.senha]);
     dto.id = id;
     return dto;
   }

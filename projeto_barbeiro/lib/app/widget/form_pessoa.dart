@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_barbeiro/app/aplicacao/ap_cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
+import 'package:projeto_barbeiro/app/rotas.dart';
+
 
 class FormCliente extends StatelessWidget {
 
@@ -20,20 +22,41 @@ class FormCliente extends StatelessWidget {
         child: Text(rotulo));
     }
 
-    void _criarProcedimento() async{
-      final nome = _nomeController.text;
-      final idade = _idadeController;
-      final email = _emailController.text;
-      final cpf = _cpfController.text;
-      final senha = _senhaController.text;
-      final numeroTelefone = _numeroTelefoneController.text;
+    void _criarProcedimento() async {
+      if (_formKey.currentState!.validate()) {
+        final nome = _nomeController.text;
+        final idadeTexto = _idadeController.text;
+        final email = _emailController.text;
+        final cpf = _cpfController.text;
+        final senha = _senhaController.text;
+        final numeroTelefone = _numeroTelefoneController.text;
 
-      DTOCliente dto = DTOCliente(idade: idade as int, nome: nome, email: email, cpf: cpf, senha: senha, numeroTelefone: numeroTelefone);
-      APCliente apCliente = APCliente();
-      await apCliente.salvar(dto);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Cliente salvo com sucesso')),
-      );
+        int? idade = int.tryParse(idadeTexto);
+        DTOCliente dto = DTOCliente(
+            idade: idade!,
+            nome: nome,
+            email: email,
+            cpf: cpf,
+            numeroTelefone: numeroTelefone,
+            senha: senha);
+
+        APCliente apCliente = APCliente();
+        await apCliente.salvar(dto);
+
+        _nomeController.clear();
+        _idadeController.clear();
+        _emailController.clear();
+        _cpfController.clear();
+        _senhaController.clear();
+        _numeroTelefoneController.clear();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Cliente salvo com sucesso')),
+        );
+        /*Future.delayed(Duration(seconds: 2), () {
+          Navigator.pushNamed(context, '/listaClientes');
+        });*/
+      }
     }
      return Scaffold(
       appBar: AppBar(

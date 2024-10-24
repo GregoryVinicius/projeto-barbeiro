@@ -1,14 +1,15 @@
-import 'package:projeto_barbeiro/app/banco/sqlite/dao_pessoa.dart';
+import 'package:projeto_barbeiro/app/banco/sqlite/dao_cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/Cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
 import 'package:projeto_barbeiro/app/dominio/interface/i_dao_cliente.dart';
 
 class APCliente {
-  late IDAOCliente dao;
+  late DaoCliente dao;
   late Cliente dominio;
 
   APCliente() {
     dao = DaoCliente();
+    dominio = Cliente(dao: dao);
   }
 
    Future<DTOCliente> salvar(DTOCliente dto) async {

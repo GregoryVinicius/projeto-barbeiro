@@ -1,36 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_barbeiro/app/aplicacao/ap_pessoa.dart';
+import 'package:projeto_barbeiro/app/aplicacao/ap_cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
 import 'package:projeto_barbeiro/app/rotas.dart';
 
 class ListaCliente extends StatelessWidget {
   Future<List<DTOCliente>> consultar() async {
-    return [
-      DTOCliente(
-          nome: 'Roger Silva',
-          cpf: '111.111.111-11',
-          idade: 18,
-          email: 'Roger@email.com',
-          senha: 'aA1!aaaa',
-          numeroTelefone: '11-91234-5678'),
-      DTOCliente(
-          nome: 'Maria Oliveira',
-          cpf: '222.222.222-22',
-          idade: 25,
-          email: 'maria@email.com',
-          senha: 'bB2!bbbb',
-          numeroTelefone: '11-92345-6789'),
-      DTOCliente(
-          nome: 'Carlos Santos',
-          cpf: '333.333.333-33',
-          idade: 30,
-          email: 'carlos@email.com',
-          senha: 'cC3!cccc',
-          numeroTelefone: '11-93456-7890')
-    ];
+    APCliente aplicacao = APCliente();
+    print("Aqui instanciou o Ao cliente e i´ra fazer a requisição");
+    return await aplicacao.consultar();
   }
-
-  var aplicacao = APCliente();
 
   Widget CriarBotao(BuildContext context, String rota, String rotulo) {
     return TextButton(
@@ -45,7 +23,7 @@ class ListaCliente extends StatelessWidget {
         title: Text('lista Cliente'),
       ),
       body: FutureBuilder(
-          future: aplicacao.consultar(),
+          future: consultar(),
           builder:
               (BuildContext context, AsyncSnapshot<List<DTOCliente>> consulta) {
             var dados = consulta.data;

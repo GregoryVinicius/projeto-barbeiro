@@ -10,7 +10,7 @@ class DaoCliente implements IDAOCliente {
     VALUES (?,?,?,?,?,?)
   ''';
   final sqlAlterar = '''
-    UPDATE cliente SET nome=?, idade=?, numeroTelefone=?, email=?, cpf=?
+    UPDATE cliente SET nome=?, idade=?, numeroTelefone=?, email=?, cpf=?, senha=?
     WHERE id = ?
   ''';
   final sqlConsultarPorId = '''
@@ -46,7 +46,7 @@ class DaoCliente implements IDAOCliente {
         idade: resultado['idade'].hashCode,
         numeroTelefone: resultado['numeroTelefone'].toString(),
         email: resultado['email'].toString(),
-        cpf: resultado['CPF'].toString(),
+        cpf: resultado['cpf'].toString(),
         senha: resultado['senha'].toString());
     return professor;
   }
@@ -62,7 +62,7 @@ class DaoCliente implements IDAOCliente {
           idade: linha['idade'].hashCode,
           numeroTelefone: linha['numeroTelefone'].toString(),
           email: linha['email'].toString(),
-          cpf: linha['CPF'].toString(),
+          cpf: linha['cpf'].toString(),
           senha: linha['senha'].toString());
     });
     return Clientes;

@@ -1,5 +1,5 @@
 import 'package:projeto_barbeiro/app/banco/conexao.dart';
-import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/dto/dto_cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/interface/i_dao_cliente.dart';
 import 'package:sqflite/sqflite.dart';
 

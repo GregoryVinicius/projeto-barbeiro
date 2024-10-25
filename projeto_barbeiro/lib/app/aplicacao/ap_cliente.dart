@@ -1,6 +1,6 @@
 import 'package:projeto_barbeiro/app/banco/sqlite/dao_cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/Cliente.dart';
-import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/dto/dto_cliente.dart';
 import 'package:projeto_barbeiro/app/dominio/interface/i_dao_cliente.dart';
 
 class APCliente {

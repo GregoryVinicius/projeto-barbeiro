@@ -1,4 +1,4 @@
-import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/dto/dto_cliente.dart';
 
 abstract class IDAOCliente {
   Future<DTOCliente> salvar(DTOCliente dto);

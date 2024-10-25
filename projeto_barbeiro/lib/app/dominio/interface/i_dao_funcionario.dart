@@ -1,5 +1,5 @@
 import 'package:projeto_barbeiro/app/dominio/dto/dto_funcionario.dart';
-import 'package:projeto_barbeiro/app/dominio/dto/dto_pessoa.dart';
+import 'package:projeto_barbeiro/app/dominio/dto/dto_cliente.dart';
 
 abstract class IDAOFuncionario {
   Future<DTOFuncionario> salvar(DTOFuncionario dto);

@@ -7,14 +7,66 @@ class Agendamento {
   String status;
   IDAOAgendamento dao;
 
-  Agendamento({
-    required this.clienteId,
-    required this.profissionalId,
-    required this.dataHora,
-    required this.duracao,
-    required this.servico,
-    this.status = 'agendado',
-  });
+  Agendamento({required this.dao});
+
+  validar({required DTOAgendamento dto}){
+    clienteId = dto.clienteId;
+    profissionalId = dto.profissionalId;
+    dataHora = dto.dataHora;
+    duracao = dto.duracao;
+    servico = dto.servico;
+    status = dto.status;
+  }
+
+  Future<DTOAgendamento> salvar(DTOAgendamento dto){
+    validar(dto: dto);
+    return dao.salvar(dto);
+  }
+
+  Future<DTOAgendamento> alterar(dynamic id) async{
+    this.id = id;
+    return await dao.alterar(_id);
+  }
+
+  Future<bool> excluir(dynamic id) async{
+    this.id = id;
+    return true;
+  }
+
+  Future<List<DTOAgendamento>> consulta() async{
+    return await dao.consulta();
+  }
+
+  dynamic? get clienteId => _clienteId;
+  dynamic? get profissionalId => _profissionalId;
+  DateTime? get dataHora => _dataHora;
+  Duration? get duracao => _duracao;
+  String? get servico => _servico;
+  String? get status => _status;
+
+  set clienteId(int? id){
+    _clienteId = clienteId;
+  }
+
+  set profissionalId(int? id){
+    _profissionalId = profissionalId;
+  }
+
+  set dataHora(DateTime dataHora){
+    _dataHora = dataHora;
+  }
+
+  set duracao(Duration duracao){
+    _duracao = duracao;
+  }
+
+  set servico(String servico){
+    _servico = servico;
+  }
+
+  set status(String status){
+    _status = status;
+  }
 
   DateTime get termino => dataHora.add(duracao);
 

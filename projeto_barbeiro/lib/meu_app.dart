@@ -15,7 +15,8 @@ class MeuApp extends StatelessWidget {
         routes: {
           Rotas.home: (context) => ListaCliente(),
           Rotas.formClientes: (context) => FormCliente(),
-          Rotas.detalhesClientes: (context) => DetalhesClientes()
+          Rotas.detalhesClientes: (context) => DetalhesClientes(),
+          Rotas.detalhesServico: (context) => 
         });
   }
 }

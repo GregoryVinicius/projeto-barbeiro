@@ -41,21 +41,21 @@ class DaoCliente implements IDAOCliente {
   Future<DTOCliente> consultarPorId(int id) async {
     _db = await Conexao.iniciar();
     var resultado = (await _db.rawQuery(sqlConsultarPorId, [id])).first;
-    DTOCliente professor = DTOCliente(
+    DTOCliente cliente = DTOCliente(
         nome: resultado['nome'].toString(),
         idade: resultado['idade'].hashCode,
         numeroTelefone: resultado['numeroTelefone'].toString(),
         email: resultado['email'].toString(),
         cpf: resultado['cpf'].toString(),
         senha: resultado['senha'].toString());
-    return professor;
+    return cliente;
   }
 
   @override
   Future<List<DTOCliente>> consultar() async {
     _db = await Conexao.iniciar();
     var resultado = await _db.rawQuery(sqlConsultar);
-    List<DTOCliente> Clientes = List.generate(resultado.length, (i) {
+    List<DTOCliente> cliente = List.generate(resultado.length, (i) {
       var linha = resultado[i];
       return DTOCliente(
           nome: linha['nome'].toString(),
@@ -65,6 +65,6 @@ class DaoCliente implements IDAOCliente {
           cpf: linha['cpf'].toString(),
           senha: linha['senha'].toString());
     });
-    return Clientes;
+    return cliente;
   }
 }

@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_barbeiro/app/aplicacao/ap_cliente.dart';
-import 'package:projeto_barbeiro/app/dominio/dto/dto_cliente.dart';
+import 'package:projeto_barbeiro/app/aplicacao/ap_agendamento.dart';
+import 'package:projeto_barbeiro/app/dominio/dto/dto_agendamento.dart';
 import 'package:projeto_barbeiro/app/rotas.dart';
 
-class ListaCliente extends StatefulWidget {
-  @override
-  _ListaClienteState createState() => _ListaClienteState();
+class ListaAgendamento extends StatefulWidget {
+  _ListaAgendamentoState createState() => _ListaAgendamentoState();
 }
 
-class _ListaClienteState extends State<ListaCliente> {
-  late Future<List<DTOCliente>> _futureClientes;
+class _ListaAgendamentoState extends State<ListaAgendamento> {
+  late Future<List<DTOAgendamento>> _futureAgendamentos;
 
   @override
   void initState() {
     super.initState();
-    _futureClientes = consultar();
+    _futureAgendamentos = consultar();
   }
 
-  Future<List<DTOCliente>> consultar() async {
-    APCliente aplicacao = APCliente();
+  Future<List<DTOAgendamento>> consultar() async {
+    APAgendamento aplicacao = APAgendamento();
     print("Aqui instanciou o APCliente e irá fazer a requisição");
-    return await aplicacao.consultar();
+    return await aplicacao.consulta();
   }
 
   Widget CriarBotao(String rotulo, VoidCallback onPressed) {
@@ -34,12 +33,12 @@ class _ListaClienteState extends State<ListaCliente> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de Clientes'),
+        title: Text('Lista de Agendamentos'),
       ),
       body: FutureBuilder(
-          future: _futureClientes,
-          builder:
-              (BuildContext context, AsyncSnapshot<List<DTOCliente>> consulta) {
+          future: _futureAgendamentos,
+          builder: (BuildContext context,
+              AsyncSnapshot<List<DTOAgendamento>> consulta) {
             if (consulta.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             } else if (consulta.hasError) {
@@ -47,41 +46,41 @@ class _ListaClienteState extends State<ListaCliente> {
             } else if (!consulta.hasData || consulta.data!.isEmpty) {
               return Text('Dados não encontrados');
             } else {
-              List<DTOCliente> lista = consulta.data!;
+              List<DTOAgendamento> lista = consulta.data!;
               return Column(
                 children: [
                   Expanded(
                     child: ListView.builder(
                         itemCount: lista.length,
                         itemBuilder: (context, index) {
-                          var cliente = lista[index];
+                          var agendamento = lista[index];
                           return ListTile(
                             leading: Icon(Icons.person),
-                            title: Text(cliente.nome),
-                            subtitle: Text(cliente.cpf),
+                            title: Text(agendamento.clienteId),
+                            subtitle: Text(agendamento.servico),
                           );
                         }),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: CriarBotao("Cadastrar Novo Cliente", () {
-                      Navigator.pushNamed(context, Rotas.formClientes);
+                    child: CriarBotao("Cadastrar Novo Agendamento", () {
+                      Navigator.pushNamed(context, Rotas.formAgendamento);
                     }),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: CriarBotao("Atualizar", () {
                       setState(() {
-                        _futureClientes = consultar();
+                        _futureAgendamentos = consultar();
                       });
                     }),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: CriarBotao("Cadastrar Novo Cliente", () {
+                    child: CriarBotao("Lista Cliente", () {
                       Navigator.pushNamed(context, Rotas.listaAgendamento);
                     }),
-                  ),
+                  )
                 ],
               );
             }

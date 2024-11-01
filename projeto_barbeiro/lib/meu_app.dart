@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_barbeiro/app/rotas.dart';
 import 'package:projeto_barbeiro/app/widget/detalhes_pessoa.dart';
+import 'package:projeto_barbeiro/app/widget/lista_agendamento.dart';
 import 'package:projeto_barbeiro/app/widget/form_pessoa.dart';
 import 'package:projeto_barbeiro/app/widget/lista_pessoa.dart';
 
@@ -16,7 +17,7 @@ class MeuApp extends StatelessWidget {
           Rotas.home: (context) => ListaCliente(),
           Rotas.formClientes: (context) => FormCliente(),
           Rotas.detalhesClientes: (context) => DetalhesClientes(),
-          Rotas.detalhesServico: (context) => 
+          Rotas.listaAgendamento: (context) => ListaAgendamento()
         });
   }
 }

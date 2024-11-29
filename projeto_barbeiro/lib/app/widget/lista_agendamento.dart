@@ -56,8 +56,8 @@ class _ListaAgendamentoState extends State<ListaAgendamento> {
                           var agendamento = lista[index];
                           return ListTile(
                             leading: Icon(Icons.person),
-                            title: Text(agendamento.clienteId),
-                            subtitle: Text(agendamento.servico),
+                            title: Text(agendamento.servico),
+                            subtitle: Text(agendamento.status),
                           );
                         }),
                   ),

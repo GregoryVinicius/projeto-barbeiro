@@ -78,7 +78,7 @@ class _ListaClienteState extends State<ListaCliente> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: CriarBotao("Cadastrar Novo Cliente", () {
+                    child: CriarBotao("Novo Agendamento", () {
                       Navigator.pushNamed(context, Rotas.listaAgendamento);
                     }),
                   ),
